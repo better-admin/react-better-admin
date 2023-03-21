@@ -1,0 +1,19 @@
+.header {
+  height: 48px;
+  line-height: 48px;
+  background: linear-gradient(90deg, rgb(15 31 74), rgb(18 71 139), rgb(27 117 201));
+}
+
+.header .ant-layout-header {
+  height: 48px;
+  line-height: 48px;
+}
+
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 8px 24px 8px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
