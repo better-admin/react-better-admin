@@ -49,10 +49,22 @@ React Router、Redux 都是支持非常友好，而 Umi 视乎没有太多案例
 
 **Clone**
 
+```shell
+git clone https://gitee.com/better-admin/react-better-admin.git
+```
+
 **Install**
+
+```shell
+cd react-better-admin
+npm install
+```
 
 **Run**
 
-**Build**
+```shell
+vite
+```
 
-## 目录结构
+
+
