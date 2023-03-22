@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {Avatar, ConfigProvider, Dropdown, Input, Menu, MenuProps, Space} from 'antd';
+import {Avatar, Badge, Card, ConfigProvider, Dropdown, Input, Menu, MenuProps, Space, TabPaneProps, Tabs} from 'antd';
 import {getFirstChildPathByParent, useMenuItems} from "../../routers/router";
 import {useTranslation} from "react-i18next";
 import {useLocation, useNavigate} from "react-router-dom";
 import styles from "../Portal/portal.module.scss";
 import {
-    BellOutlined, ExportOutlined, MoreOutlined,
+    BellOutlined, ExportOutlined, GithubOutlined, MoreOutlined,
     QuestionCircleOutlined,
     SearchOutlined, SettingOutlined,
     TranslationOutlined,
@@ -23,6 +23,10 @@ import {setLocale} from "../../store/slices/appGlobalSlice";
 import {SettingsContext} from "../../context/settings";
 import {loggedOut} from "../../store/slices/authSlice";
 
+interface Tab extends Omit<TabPaneProps, 'tab'> {
+    key: string;
+    label: React.ReactNode;
+}
 
 /**React
  * 头部
@@ -79,7 +83,7 @@ const MyHeader: React.FC = () => {
         }
     }
 
-    const items: MenuProps['items'] = [
+    const avatarItems: MenuProps['items'] = [
         {
             key: '1',
             label: <><UserOutlined/> 个人中心</>,
@@ -98,12 +102,46 @@ const MyHeader: React.FC = () => {
         },
     ];
 
+    const notifyItems: Tab[] = [
+        {
+            label: "待办事项",
+            key: "11",
+            children: <>
+                <p>这里自定义 待办事项 的内容</p>
+                <p>这里自定义 待办事项 的内容</p>
+                <p>这里自定义 待办事项 的内容</p>
+                <p>这里自定义 待办事项 的内容</p>
+            </>,
+        },
+        {
+            label: "系统通知",
+            key: "12",
+            children: <>
+                <p>这里自定义 系统通知 的内容</p>
+                <p>这里自定义 系统通知 的内容</p>
+                <p>这里自定义 系统通知 的内容</p>
+                <p>这里自定义 系统通知 的内容</p>
+            </>,
+        },
+        {
+            label: "我的消息",
+            key: "23",
+            children: <>
+                <p>这里自定义 我的消息 的内容</p>
+                <p>这里自定义 我的消息 的内容</p>
+                <p>这里自定义 我的消息 的内容</p>
+                <p>这里自定义 我的消息 的内容</p>
+            </>,
+        }
+    ]
+
+
     return (
         <Header className={styles.header}>
             <div className={styles.logo}/>
-            <Space align={"center"} size={"middle"} style={{display:"flex",justifyContent:"space-between"}}>
+            <Space align={"center"} size={"middle"} style={{display: "flex", justifyContent: "space-between"}}>
 
-                <Menu theme={"dark"} style={{background: "#00000000",minWidth:"500px"}} mode="horizontal"
+                <Menu theme={"dark"} style={{background: "#00000000", minWidth: "500px"}} mode="horizontal"
                       defaultSelectedKeys={[menuKey]}
                       items={topMenus}
                       onClick={handlerTopItemClick}
@@ -114,19 +152,43 @@ const MyHeader: React.FC = () => {
                     <Input
                         placeholder="Search ..."
                     />
-                    {/*<QuestionCircleOutlined style={{fontSize: "16px"}}/>*/}
-                    {/*<SearchOutlined style={{fontSize: "16px"}}/>*/}
 
+                    <a href="https://github.com/better-admin/react-better-admin" target="_blank"
+                       style={{color: "#fff"}}>
+                        <GithubOutlined style={{fontSize: "16px"}}/>
+                    </a>
 
-                    <Dropdown menu={{items: langItems} as MenuProps} placement="bottom">
+                    <Dropdown menu={{items: langItems}} placement="bottom">
                         <div>
                             <TranslationOutlined style={{fontSize: "16px"}}/>
                         </div>
                     </Dropdown>
 
-                    <BellOutlined style={{fontSize: "16px"}}/>
+                    <Dropdown placement="bottom" dropdownRender={
+                        (menu) => (
+                            <div style={{
+                                width: 300,
+                                background: "#fff",
+                                padding: "5px 10px",
+                                borderRadius: "8px",
+                                boxShadow: "0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05)"
+                            }}>
+                                <Tabs
+                                    defaultActiveKey="1"
+                                    centered
+                                    items={notifyItems}
+                                />
+                            </div>
+                        )
+                    }>
+                        <div>
+                            <Badge count={5} size={"small"}>
+                                <BellOutlined style={{fontSize: "16px", color: "#fff"}}/>
+                            </Badge>
+                        </div>
+                    </Dropdown>
 
-                    <Dropdown menu={{items}} placement="bottomRight">
+                    <Dropdown menu={{items: avatarItems}} placement="bottomRight">
                         <div style={{fontSize: "14px"}}>
                             <Avatar icon={<UserOutlined/>}/> Michael Yang
                         </div>
