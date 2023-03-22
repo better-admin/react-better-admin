@@ -1,4 +1,17 @@
-import {DesktopOutlined, PieChartOutlined} from "@ant-design/icons";
+import {
+    DesktopOutlined,
+    FontSizeOutlined,
+    FundOutlined,
+    FundViewOutlined, GoldOutlined,
+    HddOutlined,
+    HighlightOutlined,
+    InfoCircleOutlined,
+    MinusCircleOutlined,
+    PieChartOutlined,
+    SettingOutlined,
+    UnorderedListOutlined,
+    UserSwitchOutlined
+} from "@ant-design/icons";
 import lazyLoad from "../lazyLoad";
 import React, {lazy} from "react";
 import {MenuRouteObject} from "../router";
@@ -7,31 +20,31 @@ import Page2 from "../../pages/Page2";
 const system: MenuRouteObject = {
     path: "system",
     label: "系统管理",
-    icon: <DesktopOutlined/>,
+    icon: <SettingOutlined />,
     children: [
         {
             path: "page1",
             label: "系统参数",
-            icon: <PieChartOutlined/>,
+            icon: <UnorderedListOutlined />,
             element: lazyLoad(lazy(() => import("../../pages/Page1")))
         },
         {
             path: "dict",
             label: "数据字典",
-            icon: <DesktopOutlined/>,
+            icon: <FontSizeOutlined />,
             element: <Page2/>
         },
         {
             path: "log",
             label: "日志管理",
-            icon: <DesktopOutlined/>,
+            icon:<InfoCircleOutlined />,
             // element: <Page3/>,
             // element: <CheckLogin><Portal/></CheckLogin>,
             children:[
                 {
                     path: "action",
                     label: "操作日志",
-                    icon: <DesktopOutlined/>,
+                    icon: <HighlightOutlined />,
                     element: <Page2/>
                 },
                 {
@@ -44,30 +57,30 @@ const system: MenuRouteObject = {
         },
         {
             label: "系统监控",
-            icon: <DesktopOutlined/>,
+            icon: <FundOutlined />,
             children:[
                 {
                     path: "users",
                     label: "在线用户",
-                    icon: <DesktopOutlined/>,
+                    icon: <UserSwitchOutlined />,
                     element: <Page2/>
                 },
                 {
                     path: "server",
                     label: "服务器信息",
-                    icon: <DesktopOutlined/>,
+                    icon: <HddOutlined />,
                     element: <Page2/>
                 },
                 {
                     path: "redis",
                     label: "Redis信息",
-                    icon: <DesktopOutlined/>,
+                    icon: <FundViewOutlined />,
                     element: <Page2/>
                 },
                 {
                     path: "caches",
                     label: "Redis缓存",
-                    icon: <DesktopOutlined/>,
+                    icon: <GoldOutlined />,
                     element: <Page2/>
                 },
             ]

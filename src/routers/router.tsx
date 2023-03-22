@@ -1,18 +1,16 @@
-import {createBrowserRouter, RouteObject, useLocation} from "react-router-dom";
+import {createBrowserRouter, RouteObject} from "react-router-dom";
 import CheckLogin from "../components/CheckLogin";
 import Error404 from "../pages/Error404";
-import Login from "../pages/Login";
-import React, {lazy} from "react";
-import {DesktopOutlined, PieChartOutlined} from "@ant-design/icons";
+import React from "react";
+import { PieChartOutlined} from "@ant-design/icons";
 import {MenuProps} from "antd";
 import {useTranslation} from "react-i18next";
-import lazyLoad from "./lazyLoad";
 import Portal from "../layout/Portal";
 import welcome from "./modules/welcome";
 import system from "./modules/system";
 import front from "./front/front";
-import Breadcrumbs from "../layout/Breadcrumbs";
 import user from "./modules/user";
+import test from "./modules/test";
 
 
 export declare type MenuRouteObject ={
@@ -21,6 +19,7 @@ export declare type MenuRouteObject ={
     children?: MenuRouteObject[] | null;
 } &  RouteObject;
 
+
 /**
  * 登录成功之后的路由和菜单配置
  */
@@ -28,12 +27,7 @@ const portalRouters: MenuRouteObject[] = [
     {...welcome},
     {...user},
     {...system},
-    {
-        path: "page3",
-        label: "测试菜单",
-        icon: <DesktopOutlined/>,
-        element: lazyLoad(lazy(() => import("../pages/Page3")))
-    }
+    {...test},
 ]
 
 
