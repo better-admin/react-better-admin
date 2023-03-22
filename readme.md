@@ -66,5 +66,22 @@ npm install
 vite
 ```
 
+**Build**
+```shell
+# 开发环境
+npm run build:dev
+
+# 测试环境
+npm run build:test
+
+# 生产环境
+npm run build:pro
+```
+## 常见问题
+
+**问题1：新建的页面显示没有权限？**
+
+> 答：原因是整个系统添加了权限管理，用户只能访问有权限的页面，新添加的页面没有给当前用户分配权限，需要在
+> `mock/api.mock.ts` 文件中的 `/api/account/permissions` 里，添加新创建的页面对应的 URL（路由）地址。
 
 
