@@ -5,7 +5,7 @@ import {MenuRouteObject} from "../router";
 
 const welcome: MenuRouteObject = {
     path: "index",
-    label: "首页",
+    label: "menu.home",
     icon: <HomeOutlined />,
     element: lazyLoad(lazy(() => import("../../pages/Welcome")))
 }

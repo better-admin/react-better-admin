@@ -42,7 +42,6 @@ const MyHeader: React.FC = () => {
     }
 
 
-
     const {t, i18n} = useTranslation();
 
 
@@ -102,13 +101,13 @@ const MyHeader: React.FC = () => {
     return (
         <Header className={styles.header}>
             <div className={styles.logo}/>
-            <Space align={"center"} size={"middle"}
-                   style={{display: "flex", justifyContent: "space-between"}}>
+            <Space align={"center"} size={"middle"} style={{display:"flex",justifyContent:"space-between"}}>
 
-                <Menu theme={"dark"} style={{background: "#00000000",}} mode="horizontal"
-                    defaultSelectedKeys={[menuKey]}
-                    //   selectedKeys={[selectKey]}
-                      items={topMenus} onClick={handlerTopItemClick}/>
+                <Menu theme={"dark"} style={{background: "#00000000",minWidth:"500px"}} mode="horizontal"
+                      defaultSelectedKeys={[menuKey]}
+                      items={topMenus}
+                      onClick={handlerTopItemClick}
+                />
 
                 <Space align={"center"} size={"large"}
                        style={{textAlign: "right", color: "#fff"}}>
@@ -117,7 +116,6 @@ const MyHeader: React.FC = () => {
                     />
                     {/*<QuestionCircleOutlined style={{fontSize: "16px"}}/>*/}
                     {/*<SearchOutlined style={{fontSize: "16px"}}/>*/}
-
 
 
                     <Dropdown menu={{items: langItems} as MenuProps} placement="bottom">
@@ -133,8 +131,6 @@ const MyHeader: React.FC = () => {
                             <Avatar icon={<UserOutlined/>}/> Michael Yang
                         </div>
                     </Dropdown>
-
-
 
 
                     <MoreOutlined style={{fontSize: "18px"}}/>

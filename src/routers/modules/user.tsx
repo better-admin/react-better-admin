@@ -14,7 +14,7 @@ import Page3 from "../../pages/Page3";
 
 const system: MenuRouteObject = {
     path: "user",
-    label: "用户管理",
+    label: "menu.user management",
     icon:<UserOutlined />,
     children: [
         {

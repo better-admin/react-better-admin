@@ -20,7 +20,7 @@ import Error404 from "../../pages/Error404";
 
 const system: MenuRouteObject = {
     path: "system",
-    label: "系统管理",
+    label: "menu.system management",
     icon: <SettingOutlined/>,
     children: [
         {
