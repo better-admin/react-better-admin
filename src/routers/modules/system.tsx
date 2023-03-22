@@ -17,6 +17,8 @@ import {MenuRouteObject} from "../router";
 import Page2 from "../../pages/Page2";
 import Error403 from "../../pages/Error403";
 import Error404 from "../../pages/Error404";
+import ResultSuccess from "../../pages/ResultSuccess";
+import ResultFail from "../../pages/ResultFail";
 
 const system: MenuRouteObject = {
     path: "system",
@@ -91,6 +93,18 @@ const system: MenuRouteObject = {
             icon: <BgColorsOutlined/>,
             children: [
                 {
+                    path: "success",
+                    label: "操作成功",
+                    icon: <FileDoneOutlined/>,
+                    element: <ResultSuccess/>
+                },
+                {
+                    path: "fail",
+                    label: "操作失败",
+                    icon: <FileDoneOutlined/>,
+                    element: <ResultFail/>
+                },
+                {
                     path: "403",
                     label: "403 页面",
                     icon: <FileDoneOutlined/>,
@@ -102,6 +116,7 @@ const system: MenuRouteObject = {
                     icon: <FileDoneOutlined/>,
                     element: <Error404/>
                 },
+
             ]
         }
     ]
