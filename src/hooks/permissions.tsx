@@ -5,25 +5,21 @@ import {useGetAccountPermissionsQuery} from "../apis/accountApi";
  * @param permissionKey 权限 key
  */
 export const useHasPermission = (permissionKey: string | string[]) => {
-    const {data, isLoading} = useGetAccountPermissionsQuery(1);
+    const {data, isLoading} = useGetAccountPermissionsQuery();
 
     const hasPermission = (): boolean => {
-        if (true){
-            return true;
-        }
         if (isLoading) {
             return false;
         }
-        console.log(">>>>>> hasPermission: ",data)
         if (Array.isArray(permissionKey)){
             for (let key of permissionKey) {
-                if (!data.permissions.includes(permissionKey)){
+                if (data!.permissions.includes(key)){
                     return false;
                 }
             }
             return true;
         }
-        return data.permissions.includes(permissionKey);
+        return data!.permissions.includes(permissionKey);
     }
     return {isLoading, hasPermission};
 }
@@ -34,22 +30,21 @@ export const useHasPermission = (permissionKey: string | string[]) => {
  * @param permissionKey 权限 key
  */
 export const useHasAnyPermission = (permissionKey: string | string[]) => {
-    const {data, isLoading} = useGetAccountPermissionsQuery(1);
+    const {data, isLoading} = useGetAccountPermissionsQuery();
 
     const hasAnyPermission = (): boolean => {
         if (isLoading) {
             return false;
         }
-        console.log(">>>>>> hasPermission: ",data)
         if (Array.isArray(permissionKey)){
             for (let key of permissionKey) {
-                if (data.permissions.includes(permissionKey)){
+                if (data!.permissions.includes(key)){
                     return true;
                 }
             }
             return false;
         }
-        return data.permissions.includes(permissionKey);
+        return data!.permissions.includes(permissionKey);
     }
 
     return {isLoading, hasAnyPermission};

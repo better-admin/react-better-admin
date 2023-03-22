@@ -19,7 +19,7 @@ export const accountApi = createApi({
             query: (n) => `account/1`,
         }),
 
-        getAccountPermissions: builder.query<ResponseData,void>({
+        getAccountPermissions: builder.query<ResponseData & {permissions:string[]},void>({
             query: (n) => `account/permissions`,
         }),
     }),

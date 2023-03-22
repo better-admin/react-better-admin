@@ -26,7 +26,7 @@ const system: MenuRouteObject = {
     icon: <SettingOutlined/>,
     children: [
         {
-            path: "page1",
+            path: "params",
             label: "系统参数",
             icon: <UnorderedListOutlined/>,
             element: lazyLoad(lazy(() => import("../../pages/Page1")))
@@ -54,7 +54,7 @@ const system: MenuRouteObject = {
                     icon: <DesktopOutlined/>,
                     element: <Page2/>
                 },
-            ]
+            ] as MenuRouteObject[]
         },
         {
             label: "系统监控",
@@ -85,7 +85,7 @@ const system: MenuRouteObject = {
                     icon: <GoldOutlined/>,
                     element: <Page2/>
                 },
-            ]
+            ] as MenuRouteObject[]
         },
         {
             label: "开发示例",
@@ -117,8 +117,8 @@ const system: MenuRouteObject = {
                     element: <Error404/>
                 },
 
-            ]
+            ] as MenuRouteObject[]
         }
-    ]
+    ] as MenuRouteObject[]
 }
 export default system

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Layout, theme} from 'antd';
 import {Outlet} from "react-router-dom";
-import CheckPermi from "../../components/CheckPermi";
 import Breadcrumbs from "../Breadcrumbs";
 import MyHeader from "../MyHeader";
 import MySider from "../MySider";
+import CheckPerms from "../../components/CheckPerms";
 
 const {Content} = Layout;
 
@@ -29,9 +29,9 @@ const Portal: React.FC = () => {
                         background: colorBgContainer,
                     }}
                     >
-                        <CheckPermi>
+                        <CheckPerms>
                             <Outlet/>
-                        </CheckPermi>
+                        </CheckPerms>
                     </Content>
                 </Layout>
             </Layout>

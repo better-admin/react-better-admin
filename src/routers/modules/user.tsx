@@ -15,44 +15,44 @@ import Page3 from "../../pages/Page3";
 const system: MenuRouteObject = {
     path: "user",
     label: "menu.user management",
-    icon:<UserOutlined />,
+    icon: <UserOutlined/>,
     children: [
         {
             path: "list",
             label: "用户列表",
-            icon: <TeamOutlined />,
+            icon: <TeamOutlined/>,
             element: lazyLoad(lazy(() => import("../../pages/user/UserList")))
         },
         {
             path: "dept",
             label: "部门管理",
-            icon: <InsertRowRightOutlined />,
+            icon: <InsertRowRightOutlined/>,
             element: <Page2/>
         },
         {
-            path: "page3",
+            path: "position",
             label: "岗位管理",
-            icon: <UserSwitchOutlined />,
+            icon: <UserSwitchOutlined/>,
             element: <Page3/>
         },
         {
-            path: "position",
+            path: "role",
             label: "角色管理",
-            icon: <TagsOutlined />,
+            icon: <TagsOutlined/>,
             element: <Page3/>
         },
         {
             path: "permission",
             label: "权限管理",
-            icon: <ThunderboltOutlined />,
+            icon: <ThunderboltOutlined/>,
             element: <Page3/>
         },
         {
             path: "menu",
             label: "用户菜单",
-            icon: <MenuOutlined />,
+            icon: <MenuOutlined/>,
             element: <Page3/>
         },
-    ]
+    ] as MenuRouteObject[]
 }
 export default system
