@@ -7,6 +7,7 @@ import {ResponseData} from "./types";
 export const accountApi = createApi({
     baseQuery: myFetchQuery,
     tagTypes: [],
+    reducerPath:"accountApi",
     endpoints: (builder) => ({
         login: builder.mutation<ResponseData & { jwt: string }, { account: string, password: string }>({
             query: (body) => ({

@@ -9,7 +9,7 @@ import {
 import lazyLoad from "../lazyLoad";
 import React, {lazy} from "react";
 import {MenuRouteObject} from "../router";
-import Page2 from "../../pages/Page2";
+import Page2 from "../../pages/Page3";
 import Page3 from "../../pages/Page3";
 
 const system: MenuRouteObject = {

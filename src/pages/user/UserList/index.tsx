@@ -2,18 +2,18 @@ import React, {useState} from 'react';
 import {
     ColumnHeightOutlined, DeleteOutlined, DownloadOutlined,
     DownOutlined, EditOutlined, EyeOutlined, FormatPainterOutlined, LineChartOutlined,
-    MenuOutlined, MoreOutlined,
+    MenuOutlined, MoreOutlined, PlusOutlined,
     ReloadOutlined,
-    SearchOutlined, SwapOutlined,
+    SearchOutlined, SlidersOutlined, SwapOutlined,
     UploadOutlined,
     UpOutlined
 } from '@ant-design/icons';
 import {
     Alert,
-    Button,
-    Col,
+    Button, Checkbox,
+    Col, Drawer, Dropdown,
     Form,
-    Input,
+    Input, MenuProps,
     Modal,
     Pagination,
     Popconfirm,
@@ -21,11 +21,13 @@ import {
     Select,
     Space,
     Table,
-    theme,
+    theme, Tooltip,
     Upload
 } from 'antd';
 import {ColumnsType} from "antd/es/table";
 import {TableRowSelection} from "antd/es/table/interface";
+import UserEdit from "../UserEdit";
+import DictSelect from "../../../components/DictSelect";
 
 const {Option} = Select;
 
@@ -43,6 +45,7 @@ const AdvancedSearchForm = () => {
         marginBottom: '20px'
 
     } ;
+
 
     const getFields = () => {
         const count = expand ? 10 : 3;
@@ -66,7 +69,7 @@ const AdvancedSearchForm = () => {
                             <Select defaultValue="2">
                                 <Option value="1">1</Option>
                                 <Option value="2">
-                                    longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
+                nglonglong
                                 </Option>
                             </Select>
                         )}
@@ -167,6 +170,21 @@ const UserList: React.FC = () => {
     ];
 
 
+    const densityItems: MenuProps['items'] = [
+        {
+            key: '1',
+            label:'默认',
+        },
+        {
+            key: '2',
+            label: '宽松',
+        },
+        {
+            key: '3',
+            label: '紧凑',
+        },
+    ];
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
@@ -192,17 +210,25 @@ const UserList: React.FC = () => {
     };
 
     // rowSelection.
+    const [showDrawer, setShowDrawer] = useState(false);
 
     return (
         <div>
+
+            <Drawer title="列设置" placement="right" onClose={()=>setShowDrawer(false)}  open={showDrawer}>
+                {columns.map((item)=>{
+                    return <p> <Checkbox>{item.title}</Checkbox></p>
+                })}
+            </Drawer>
+
             <AdvancedSearchForm/>
 
-            <Modal title="Basic Modal"
+            <Modal title="新增用户"
                    open={isModalOpen}
                    onOk={() => setIsModalOpen(false)}
                    onCancel={() => setIsModalOpen(false)}
                    width={"60%"}>
-                <AdvancedSearchForm/>
+                <UserEdit />
             </Modal>
 
             <Space style={{display: "flex", justifyContent: "space-between", padding: "10px 0"} }>
@@ -211,7 +237,9 @@ const UserList: React.FC = () => {
 
                     <Button type="primary" onClick={() => {
                         setIsModalOpen(!isModalOpen)
-                    }}>新增</Button>
+                    }}><PlusOutlined />新增</Button>
+
+                    <DictSelect dictUrl={"/account/status"} style={{width:"130px"}} />
 
                     { selectCount > 0 &&
                         <div style={{border:"1px solid #abdcff",borderRadius:"6px", padding:"0 10px", margin:"-1px",background:"#f0faff"} }>
@@ -232,12 +260,28 @@ const UserList: React.FC = () => {
 
                 </Space>
 
-                <Space align={"center"} size={"middle"}>
-                    <ReloadOutlined/>
-                    <DownloadOutlined />
-                    <ColumnHeightOutlined/>
-                    <FormatPainterOutlined/>
-                    <SwapOutlined />
+                <Space align={"center"} size={"small"}>
+                    <Tooltip title="刷新">
+                        <Button type={"text"} icon={ <ReloadOutlined/>} />
+                    </Tooltip>
+
+                    <Tooltip title="导出">
+                        <Button type={"text"} icon={<DownloadOutlined />} />
+                    </Tooltip>
+
+                    <Tooltip title="密度">
+                        <Dropdown menu={{ items: densityItems }} placement="bottom" arrow trigger={['click']}>
+                            <Button type={"text"} icon={<ColumnHeightOutlined />} />
+                        </Dropdown>
+                    </Tooltip>
+
+                    <Tooltip title="打印">
+                        <Button type={"text"} icon={<FormatPainterOutlined/>} />
+                    </Tooltip>
+
+                    <Tooltip title="列设置">
+                        <Button type={"text"} icon={<SwapOutlined />} onClick={()=>{setShowDrawer(true)}}/>
+                    </Tooltip>
                 </Space>
 
             </Space>

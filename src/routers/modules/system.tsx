@@ -14,7 +14,7 @@ import {
 import lazyLoad from "../lazyLoad";
 import React, {lazy} from "react";
 import {MenuRouteObject} from "../router";
-import Page2 from "../../pages/Page2";
+import Page3 from "../../pages/Page3";
 import Error403 from "../../pages/Error403";
 import Error404 from "../../pages/Error404";
 import ResultSuccess from "../../pages/ResultSuccess";
@@ -29,13 +29,13 @@ const system: MenuRouteObject = {
             path: "params",
             label: "系统参数",
             icon: <UnorderedListOutlined/>,
-            element: lazyLoad(lazy(() => import("../../pages/Page1")))
+            element: lazyLoad(lazy(() => import("../../pages/Page3")))
         },
         {
             path: "dict",
             label: "数据字典",
             icon: <FontSizeOutlined/>,
-            element: <Page2/>
+            element: <Page3/>
         },
         {
             path: "log",
@@ -46,13 +46,13 @@ const system: MenuRouteObject = {
                     path: "action",
                     label: "操作日志",
                     icon: <HighlightOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
                 {
                     path: "login",
                     label: "登录日志",
                     icon: <DesktopOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
             ] as MenuRouteObject[]
         },
@@ -65,25 +65,25 @@ const system: MenuRouteObject = {
                     path: "users",
                     label: "在线用户",
                     icon: <UserSwitchOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
                 {
                     path: "server",
                     label: "服务器信息",
                     icon: <HddOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
                 {
                     path: "redis",
                     label: "Redis信息",
                     icon: <FundViewOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
                 {
                     path: "caches",
                     label: "Redis缓存",
                     icon: <GoldOutlined/>,
-                    element: <Page2/>
+                    element: <Page3/>
                 },
             ] as MenuRouteObject[]
         },

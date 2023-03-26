@@ -60,5 +60,19 @@ export default defineMock([
                 "/test",
             ]
         }
-    }
+    },
+
+
+    {
+        url: '/api/account/status',
+        delay: 1000,
+        body: {
+            errorCode: 0,
+            list:[
+                {value:1,text:'正常'},
+                {value:2,text:'未激活'},
+                {value:3,text:'已冻结'},
+            ]
+        }
+    },
 ])
